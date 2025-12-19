@@ -3,7 +3,7 @@
 **Native F# compilation with preserved type and memory safety.**
 
 <p align="center">
-<strong>Under Active Development</strong><br>
+🚧 <strong>Under Active Development</strong> 🚧<br>
 <em>These projects are in early development and not intended for production use.</em>
 </p>
 
