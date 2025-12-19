@@ -9,7 +9,7 @@
 
 ## About
 
-F# has several compilation targets. The standard compiler produces .NET assemblies for the Common Language Runtime. [Fable](https://fable.io/) transpiles F# to JavaScript, TypeScript, Rust, Python, and other languages for web and cross-platform development. [WebSharper](https://websharper.com/) provides full-stack F# web applications. Fidelity adds another option: native binaries without a runtime or garbage collector.
+F# has several compilation targets. The standard compiler produces .NET assemblies for the Common Language Runtime. [Fable](https://fable.io/) transpiles F# to JavaScript, TypeScript, Rust, Python, and other languages for web and cross-platform development. Another pathway, WebSharper, also provides full-stack F# web applications. Fidelity adds another option: native binaries without a runtime or garbage collector.
 
 Where other compilers target managed runtimes or transpile to languages with their own memory models, Fidelity produces standalone executables with deterministic memory management and compile-time safety guarantees. The name "Fidelity" reflects this mission: preserving type and memory safety from source code through compilation to native execution. The properties you rely on in your F# code remain true in the generated binary.
 
