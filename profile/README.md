@@ -1,0 +1,100 @@
+# Fidelity Framework
+
+**Native F# compilation with preserved type and memory safety.**
+
+<p align="center">
+<strong>Under Active Development</strong><br>
+<em>These projects are in early development and not intended for production use.</em>
+</p>
+
+## About
+
+The Fidelity Framework compiles F# to native binaries without a .NET runtime or garbage collector. Where traditional F# targets the Common Language Runtime, Fidelity produces standalone executables with deterministic memory management and compile-time safety guarantees.
+
+The name "Fidelity" reflects the core mission: preserving type and memory safety from source code through compilation to native execution. The properties you rely on in your F# code remain true in the generated binary.
+
+## Projects
+
+| Repository | Description |
+|------------|-------------|
+| **[Firefly](https://github.com/FidelityFramework/Firefly)** | AOT compiler orchestrating the pipeline from F# source through MLIR to native binaries |
+| **[Alloy](https://github.com/FidelityFramework/Alloy)** | Native standard library providing BCL-sympathetic APIs without runtime dependencies |
+| **[BAREWire](https://github.com/FidelityFramework/BAREWire)** | Type-safe binary encoding, zero-copy memory operations, and IPC |
+| **[Farscape](https://github.com/FidelityFramework/Farscape)** | C/C++ header parsing for generating native library bindings |
+| **[XParsec](https://github.com/FidelityFramework/XParsec)** | Parser combinators powering PSG traversal and header parsing |
+| **[fsnative](https://github.com/FidelityFramework/fsnative)** | F# Native Compiler Services (FNCS) providing native type resolution |
+| **[fsnative-spec](https://github.com/FidelityFramework/fsnative-spec)** | Normative specification for native F# type semantics |
+
+## How It Works
+
+```
+F# Source Code
+    |
+    v
+FNCS (fsnative)          Type checking with native type resolution
+    |
+    v
+Program Semantic Graph   Rich intermediate representation
+    |
+    v
+Alex (in Firefly)        MLIR generation with platform bindings
+    |
+    v
+LLVM                     Optimization and code generation
+    |
+    v
+Native Binary            Standalone executable, no runtime
+```
+
+Firefly orchestrates this pipeline. FNCS handles parsing and type checking, resolving familiar F# types to their native representations. The Program Semantic Graph captures the full semantics of your program. Alex generates MLIR targeting your platform. LLVM produces the final binary.
+
+## What Makes Fidelity Different
+
+**Native types from the start.** When you write `string`, FNCS resolves it to a UTF-8 native string, not `System.String`. When you write `Some x`, you get a stack-allocated value option, not a heap-allocated reference. The type system understands native semantics.
+
+**Deterministic memory.** No garbage collector decides when resources are freed. Memory lifetimes are explicit. When a value goes out of scope, its resources are released immediately.
+
+**Preserved safety.** The compile-time guarantees of F# carry through to the native binary. Type safety, memory safety, and resource management are enforced at compile time, not deferred to a runtime.
+
+**Platform targeting.** The same F# code can target Linux, macOS, Windows, embedded systems, or WebAssembly. Platform-specific details are handled by the compiler, not scattered through your code.
+
+## Origins
+
+Fidelity is developed by [SpeakEZ Technologies](https://speakez.tech). The framework builds on several established foundations:
+
+- **F# Compiler Services** from Microsoft provides parsing and type checking infrastructure
+- **MLIR/LLVM** from the LLVM project provides the code generation backend
+- **F\*** from Microsoft Research and INRIA informs the verification integration roadmap
+
+## Licensing
+
+Projects in the Fidelity Framework use different licenses appropriate to their nature:
+
+| Project | License |
+|---------|---------|
+| Firefly, Alloy, BAREWire, Farscape, XParsec | Apache 2.0 + Commercial dual license |
+| fsnative | MIT (fork of dotnet/fsharp) |
+| fsnative-spec | MIT |
+
+The dual-licensed projects are available under Apache 2.0 for open source use. Commercial licenses are available for organizations requiring additional terms.
+
+Certain compilation techniques in Firefly are covered by pending patent US 63/786,264: "System and Method for Verification-Preserving Compilation Using Formal Certificate Guided Optimization."
+
+## Contributing
+
+We welcome community contributions. Each repository contains its own contribution guidelines. General principles:
+
+- Issues and discussions help shape the framework's direction
+- Pull requests should target specific, well-defined improvements
+- Documentation improvements are always appreciated
+- Please review the license terms before contributing
+
+For substantial changes, please open an issue first to discuss the approach.
+
+## Status
+
+All Fidelity projects are under active development. APIs are unstable. The framework is not yet suitable for production use. We're building in the open and appreciate patience as the work progresses.
+
+---
+
+Copyright 2025 SpeakEZ Technologies, Inc. All rights reserved.
