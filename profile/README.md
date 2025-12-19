@@ -37,16 +37,19 @@ FNCS (fsnative)          Type checking with native type resolution
 Program Semantic Graph   Rich intermediate representation
     |
     v
-Alex (in Firefly)        MLIR generation with platform bindings
+Alex (in Firefly)        Platform-aware code generation
     |
     v
-LLVM                     Optimization and code generation
+MLIR                     Multi-Level IR with dialect flexibility
     |
     v
-Native Binary            Standalone executable, no runtime
+Backend                  LLVM, or other targets as the ecosystem matures
+    |
+    v
+Native Binary            Standalone executable, library, unikernel
 ```
 
-Firefly orchestrates this pipeline. FNCS handles parsing and type checking, resolving familiar F# types to their native representations. The Program Semantic Graph captures the full semantics of your program. Alex generates MLIR targeting your platform. LLVM produces the final binary.
+Firefly orchestrates this pipeline. FNCS handles parsing and type checking, resolving familiar F# types to their native representations. The Program Semantic Graph captures the full semantics of your program. Alex generates MLIR—and this is where degrees of freedom emerge. MLIR's dialect system allows targeting different backends without changing the upstream pipeline. In the early stages of platform maturity, we're focusing on LLVM to produce binaries. But MLIR opens the door to other backends as the ecosystem evolves. Tell us what you'd like to see!
 
 ## What Makes Fidelity Different
 
@@ -56,7 +59,7 @@ Firefly orchestrates this pipeline. FNCS handles parsing and type checking, reso
 
 **Preserved safety.** The compile-time guarantees of F# carry through to the native binary. Type safety, memory safety, and resource management are enforced at compile time, not deferred to a runtime.
 
-**Platform targeting.** The same F# code can target Linux, macOS, Windows, embedded systems, or WebAssembly. Platform-specific details are handled by the compiler, not scattered through your code.
+**Platform targeting.** The same F# code can target Linux, macOS, Windows, embedded systems, or WebAssembly. Platform-specific details are defined by you in the `.fidproj` file and handled downstream by the compiler.
 
 ## Origins
 
