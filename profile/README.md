@@ -9,11 +9,22 @@
 
 ## About
 
-F# has several compilation targets. The standard compiler produces .NET assemblies for the Common Language Runtime. [Fable](https://fable.io/) transpiles F# to JavaScript, TypeScript, Rust, Python, and other languages for web and cross-platform development. Another pathway, WebSharper, also provides full-stack F# web applications. Fidelity adds another option: native binaries without a runtime or garbage collector.
+The Fidelity Framework was created by [Houston Haynes](https://www.linkedin.com/in/houstonhaynes/), founder and CEO of [SpeakEZ Technologies](https://speakez.tech). The vision: provide maximum degrees of freedom in producing products and platforms that elevate performance, safety, and efficiency. In the case of this framework it means native compilation without runtime dependencies. On a deeper level, it translates to deterministic memory without garbage collection pauses. The emphasis is on type and memory safety that persists from source through compilation, as far as can be carried to the final binary.
 
-Where other compilers target managed runtimes or transpile to languages with their own memory models, Fidelity produces standalone executables with deterministic memory management and compile-time safety guarantees. The name "Fidelity" reflects this mission: preserving type and memory safety from source code through compilation to native execution. The properties you rely on in your F# code remain true in the generated binary.
+F# is a strong general-purpose language with more than 20 years of history and already has several compilation targets. Its original compiler produces assemblies for the .NET Common Language Runtime. [Fable](https://fable.io/) is another compiler that transpiles F# to JavaScript, TypeScript, Rust, Python, and other languages for web and cross-platform development. Still another is [WebSharper](https://websharper.com/) which like Fable provides a pathway to produce full-stack F# web applications. And Fidelity Framework brings a completely new dimension: native binaries that provide all the benefits of hand-optimized C code without the concomitant risks.
 
-Firefly, the AOT compiler at the heart of Fidelity, uses a continuation-passing style (CPS) transformation and nanopass architecture. Rather than large monolithic compiler phases, the pipeline consists of many small, composable passes that each perform a single transformation. This design enables verification, optimization, and targeting flexibility. For deeper discussion of the architectural thinking behind Fidelity, see the [SpeakEZ blog](https://speakez.tech/blog/).
+Where other compilers target managed runtimes or transpile to languages with their own memory models, Fidelity is designed to produce native applications and libraries with deterministic memory management and compile-time safety guarantees. The name "Fidelity" reflects this mission: preserving type and memory safety from source code through compilation to native execution. The properties you rely on in your F# code remain true in the generated binary.
+
+Firefly, the native AOT compiler at the heart of the Fidelity framework, uses a continuation-passing style (CPS) transformation and nanopass architecture. Rather than large monolithic compiler phases, the pipeline consists of many small, composable passes that each perform a single transformation. This design enables verification, optimization, and targeting flexibility.
+
+### Learn More
+
+For deeper discussion of the architectural thinking behind Fidelity, see the [SpeakEZ blog](https://speakez.tech/blog/). Key articles include:
+
+- [The Fidelity Framework: A Primer](https://speakez.tech/blog/fidelity-framework-a-primer/) — Overview of the framework's goals, components, and design philosophy
+- [Delimited Continuations: Fidelity's Turning Point](https://speakez.tech/blog/delimited-continuations-fidelitys-turning-point/) — How CPS unifies async, actors, and native compilation
+- [Building Firefly with Alloy](https://speakez.tech/blog/building-firefly-with-alloy/) — Achieving deterministic memory management in F#
+- [Proof-Aware Compilation Through Hypergraphs](https://speakez.tech/blog/proof-aware-compilation-through-hypergraphs/) — How verification guides optimization for a safer, faster application
 
 ## Projects
 
@@ -74,6 +85,8 @@ Fidelity is developed by [SpeakEZ Technologies](https://speakez.tech). The frame
 - **F\*** from Microsoft Research and INRIA informs the verification integration roadmap
 
 ## Licensing
+
+While SpeakEZ Technologies intends to develop this platform for commercialization, we provide open licensing for several reasons: to make source available for inspection and learning, to support further research in compiler architecture and formal verification, and to enable community contributions back to the systems from which we draw inspiration.
 
 Projects in the Fidelity Framework use different licenses appropriate to their nature:
 
