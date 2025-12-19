@@ -9,9 +9,11 @@
 
 ## About
 
-The Fidelity Framework compiles F# to native binaries without a .NET runtime or garbage collector. Where traditional F# targets the Common Language Runtime, Fidelity produces standalone executables with deterministic memory management and compile-time safety guarantees.
+F# has several compilation targets. The standard compiler produces .NET assemblies for the Common Language Runtime. [Fable](https://fable.io/) transpiles F# to JavaScript, TypeScript, Rust, Python, and other languages for web and cross-platform development. [WebSharper](https://websharper.com/) provides full-stack F# web applications. Fidelity adds another option: native binaries without a runtime or garbage collector.
 
-The name "Fidelity" reflects the core mission: preserving type and memory safety from source code through compilation to native execution. The properties you rely on in your F# code remain true in the generated binary.
+Where other compilers target managed runtimes or transpile to languages with their own memory models, Fidelity produces standalone executables with deterministic memory management and compile-time safety guarantees. The name "Fidelity" reflects this mission: preserving type and memory safety from source code through compilation to native execution. The properties you rely on in your F# code remain true in the generated binary.
+
+Firefly, the AOT compiler at the heart of Fidelity, uses a continuation-passing style (CPS) transformation and nanopass architecture. Rather than large monolithic compiler phases, the pipeline consists of many small, composable passes that each perform a single transformation. This design enables verification, optimization, and targeting flexibility. For deeper discussion of the architectural thinking behind Fidelity, see the [SpeakEZ blog](https://speakez.tech/blog/).
 
 ## Projects
 
