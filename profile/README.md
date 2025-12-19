@@ -21,9 +21,11 @@ The name "Fidelity" reflects the core mission: preserving type and memory safety
 | **[Alloy](https://github.com/FidelityFramework/Alloy)** | Native standard library providing BCL-sympathetic APIs without runtime dependencies |
 | **[BAREWire](https://github.com/FidelityFramework/BAREWire)** | Type-safe binary encoding, zero-copy memory operations, and IPC |
 | **[Farscape](https://github.com/FidelityFramework/Farscape)** | C/C++ header parsing for generating native library bindings |
-| **[XParsec](https://github.com/FidelityFramework/XParsec)** | Parser combinators powering PSG traversal and header parsing |
 | **[fsnative](https://github.com/FidelityFramework/fsnative)** | F# Native Compiler Services (FNCS) providing native type resolution |
 | **[fsnative-spec](https://github.com/FidelityFramework/fsnative-spec)** | Normative specification for native F# type semantics |
+| **[FStar](https://github.com/FidelityFramework/FStar)** | Proof-oriented language with adaptations for fsnative integration |
+| **[fsil](https://github.com/FidelityFramework/fsil)** | F# inline generic library |
+| **[FSharp.UMX](https://github.com/FidelityFramework/FSharp.UMX)** | Units of measure for primitive non-numeric types |
 
 ## How It Works
 
@@ -75,9 +77,11 @@ Projects in the Fidelity Framework use different licenses appropriate to their n
 
 | Project | License |
 |---------|---------|
-| Firefly, Alloy, BAREWire, Farscape, XParsec | Apache 2.0 + Commercial dual license |
-| fsnative | MIT (fork of dotnet/fsharp) |
-| fsnative-spec | MIT |
+| Firefly, Alloy, BAREWire, Farscape | Apache 2.0 + Commercial dual license |
+| fsnative | MIT (hard fork of dotnet/fsharp) |
+| fsnative-spec | MIT (hard fork of fsprojects/fsharp-spec) |
+| FStar | Apache 2.0 (fork of FStarLang/FStar) |
+| fsil, FSharp.UMX | MIT |
 
 The dual-licensed projects are available under Apache 2.0 for open source use. Commercial licenses are available for organizations requiring additional terms.
 
@@ -100,4 +104,6 @@ All Fidelity projects are under active development. APIs are unstable. The frame
 
 ---
 
+<p align="center">
 Copyright 2025 SpeakEZ Technologies, Inc. All rights reserved.
+</p>
