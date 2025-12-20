@@ -78,7 +78,7 @@ Firefly orchestrates this pipeline. FNCS handles parsing and type checking, reso
 
 **Preserved safety.** The compile-time guarantees of F# carry through to the native binary. Type safety, memory safety, and resource management are enforced at compile time, not deferred to a runtime.
 
-**Platform targeting.** The same F# code can target Linux, macOS, Windows, embedded systems, or WebAssembly. Platform-specific details are defined by you in the `.fidproj` file and handled downstream by the compiler.
+**Platform targeting.** The same F# code can target Linux, macOS, Windows, embedded systems, or WebAssembly. Platform-specific details are defined by you in the `.fidproj` file and handled downstream by the compiler. And we have plans on our roadmap to address GPU, TPU and other accelerators and specialty processors.
 
 ## Origins
 
