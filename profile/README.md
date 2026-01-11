@@ -9,9 +9,9 @@
 
 ## About
 
-The Fidelity Framework was created by [Houston Haynes](https://www.linkedin.com/in/houstonhaynes/), founder and CEO of [SpeakEZ Technologies](https://speakez.tech). The vision: 
+The Fidelity Framework was created by [Houston Haynes](https://www.linkedin.com/in/houstonhaynes/), founder and CEO of [SpeakEZ Technologies](https://speakez.tech). The vision:
 
-> provide maximum degrees of freedom in producing intelligent hardware and software products that elevate performance, safety, and efficiency. 
+> provide maximum degrees of freedom in producing intelligent hardware and software products that elevate performance, safety, and efficiency.
 
 On a technical level it means direct native compilation without runtime dependencies. For our purposes, it translates to massive advantages in elegant design and ergonomics that yields deterministic memory without garbage collection and other negative aspects of managed runtime environments. The element that separates this framework from other tool chains is its memory safety that persists from source through compilation, as far as can be carried to the final binary.
 
@@ -27,22 +27,51 @@ For deeper discussion of the architectural thinking behind Fidelity, see the [Sp
 
 - [The Fidelity Framework: A Primer](https://speakez.tech/blog/fidelity-framework-a-primer/) — Overview of the framework's goals, components, and design philosophy
 - [Delimited Continuations: Fidelity's Turning Point](https://speakez.tech/blog/delimited-continuations-fidelitys-turning-point/) — How CPS unifies async, actors, and native compilation
-- [Building Firefly with Alloy](https://speakez.tech/blog/building-firefly-with-alloy/) — Achieving deterministic memory management in F#
-- [Proof-Aware Compilation Through Hypergraphs](https://speakez.tech/blog/proof-aware-compilation-through-hypergraphs/) — How verification guides optimization for a safer, faster application
+- [The WREN Stack](https://speakez.tech/blog/wren-stack/) — WebView + Reactive + Embedded + Native desktop applications
+- [Dimensional Type Safety](https://speakez.tech/blog/dimensional-type-safety/) — How intrinsic units of measure enable multi-architecture targeting
 
-## Projects
+## Core Projects
 
 | Repository | Description |
 |------------|-------------|
 | **[Firefly](https://github.com/FidelityFramework/Firefly)** | AOT compiler orchestrating the pipeline from F# source through MLIR to native binaries |
-| **[Alloy](https://github.com/FidelityFramework/Alloy)** | Native standard library providing BCL-sympathetic APIs without runtime dependencies |
+| **[fsnative](https://github.com/FidelityFramework/fsnative)** | F# Native Compiler Services (FNCS) — hard fork of dotnet/fsharp providing native type resolution |
+| **[fsnative-spec](https://github.com/FidelityFramework/fsnative-spec)** | Normative specification for native F# type semantics |
 | **[BAREWire](https://github.com/FidelityFramework/BAREWire)** | Type-safe binary encoding, zero-copy memory operations, and IPC |
 | **[Farscape](https://github.com/FidelityFramework/Farscape)** | C/C++ header parsing for generating native library bindings |
-| **[fsnative](https://github.com/FidelityFramework/fsnative)** | F# Native Compiler Services (FNCS) providing native type resolution |
-| **[fsnative-spec](https://github.com/FidelityFramework/fsnative-spec)** | Normative specification for native F# type semantics |
+| ~~**[Alloy](https://github.com/FidelityFramework/Alloy)**~~ | ~~Native standard library~~ — *Absorbed into fsnative (January 2025). Repository preserved as historical reference.* |
+
+## WREN Stack & Tooling
+
+| Repository | Description |
+|------------|-------------|
+| **[Atelier](https://github.com/FidelityFramework/Atelier)** | Purpose-built editor for the Fidelity ecosystem, built on the WREN Stack |
+| **[Fidelity.Toml](https://github.com/FidelityFramework/Fidelity.Toml)** | TOML 1.0 compliant parser built with XParsec |
+| **[FStarHelloWorld](https://github.com/FidelityFramework/FStarHelloWorld)** | Sample F*/F# project proof of concept |
+
+## IDE Support (Forks)
+
+Forks of Ionide and related tooling adapted for F# Native development:
+
+| Repository | Description |
+|------------|-------------|
+| **[FsNativeAutoComplete](https://github.com/FidelityFramework/FsNativeAutoComplete)** | F# Native language server using Language Server Protocol |
+| **[ionide-vscode-fsnative](https://github.com/FidelityFramework/ionide-vscode-fsnative)** | VS Code plugin for F# Native development |
+| **[Ionide-vim-fsnative](https://github.com/FidelityFramework/Ionide-vim-fsnative)** | Vim plugin for F# Native based on LSP |
+| **[ionide-vscode-native-helpers](https://github.com/FidelityFramework/ionide-vscode-native-helpers)** | Common helpers for VS Code plugins |
+| **[ionide-native-analyzers](https://github.com/FidelityFramework/ionide-native-analyzers)** | Native code analyzers for Ionide |
+| **[FSharp.Native.Analyzers.SDK](https://github.com/FidelityFramework/FSharp.Native.Analyzers.SDK)** | SDK for building custom analyzers for F# Native / FSNAC |
+
+## Library Forks
+
+Libraries forked and integrated into the fsnative ecosystem as compiler intrinsics:
+
+| Repository | Description |
+|------------|-------------|
+| **[fsil](https://github.com/FidelityFramework/fsil)** | F# inline generic library — default inlining semantics for fsnative |
+| **[FSharp.UMX](https://github.com/FidelityFramework/FSharp.UMX)** | Units of measure for primitive non-numeric types — intrinsic to fsnative's type universe |
+| **[XParsec](https://github.com/FidelityFramework/XParsec)** | Parser combinator library for F# |
 | **[FStar](https://github.com/FidelityFramework/FStar)** | Proof-oriented language with adaptations for fsnative integration |
-| **[fsil](https://github.com/FidelityFramework/fsil)** | F# inline generic library |
-| **[FSharp.UMX](https://github.com/FidelityFramework/FSharp.UMX)** | Units of measure for primitive non-numeric types |
 
 ## How It Works
 
@@ -80,6 +109,8 @@ Firefly orchestrates this pipeline. FNCS handles parsing and type checking, reso
 
 **Platform targeting.** The same F# code can target Linux, macOS, Windows, embedded systems, or WebAssembly. Platform-specific details are defined by you in the `.fidproj` file and handled downstream by the compiler. And we have plans on our roadmap to address GPU, TPU and other accelerators and specialty processors.
 
+**Intrinsic units of measure.** Non-numeric dimensional types are built into the compiler, not a library. Dimensional constraints flow through the entire compilation pipeline, informing code generation for CPUs, GPUs, FPGAs, and CGRAs.
+
 ## Origins
 
 Fidelity is developed by [SpeakEZ Technologies](https://speakez.tech). The framework builds on several established foundations:
@@ -96,11 +127,12 @@ Projects in the Fidelity Framework use different licenses appropriate to their n
 
 | Project | License |
 |---------|---------|
-| Firefly, Alloy, BAREWire, Farscape | Apache 2.0 + Commercial dual license |
+| Firefly, BAREWire, Farscape, Atelier | Apache 2.0 + Commercial dual license |
 | fsnative | MIT (hard fork of dotnet/fsharp) |
 | fsnative-spec | MIT (hard fork of fsprojects/fsharp-spec) |
 | FStar | Apache 2.0 (fork of FStarLang/FStar) |
-| fsil, FSharp.UMX | MIT |
+| fsil, FSharp.UMX, XParsec | MIT |
+| Ionide forks | MIT |
 
 The dual-licensed projects are available under Apache 2.0 for open source use. Commercial licenses are available for organizations requiring additional terms.
 
