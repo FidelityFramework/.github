@@ -49,17 +49,17 @@ For deeper discussion of the architectural thinking behind Fidelity, see the [Sp
 | **[Fidelity.Toml](https://github.com/FidelityFramework/Fidelity.Toml)** | TOML 1.0 compliant parser built with XParsec |
 | **[FStarHelloWorld](https://github.com/FidelityFramework/FStarHelloWorld)** | Sample F*/F# project proof of concept |
 
-## IDE Support (Forks)
+## IDE Support (Lattice)
 
-Forks of Ionide and related tooling adapted for F# Native development:
+Lattice IDE tooling for F# Native development (evolved from Ionide):
 
 | Repository | Description |
 |------------|-------------|
 | **[FsNativeAutoComplete](https://github.com/FidelityFramework/FsNativeAutoComplete)** | F# Native language server using Language Server Protocol |
-| **[ionide-vscode-fsnative](https://github.com/FidelityFramework/ionide-vscode-fsnative)** | VS Code plugin for F# Native development |
-| **[Ionide-vim-fsnative](https://github.com/FidelityFramework/Ionide-vim-fsnative)** | Vim plugin for F# Native based on LSP |
-| **[ionide-vscode-native-helpers](https://github.com/FidelityFramework/ionide-vscode-native-helpers)** | Common helpers for VS Code plugins |
-| **[ionide-native-analyzers](https://github.com/FidelityFramework/ionide-native-analyzers)** | Native code analyzers for Ionide |
+| **[lattice-vscode](https://github.com/FidelityFramework/lattice-vscode)** | VS Code plugin for F# Native development |
+| **[lattice-vim](https://github.com/FidelityFramework/lattice-vim)** | Vim plugin for F# Native based on LSP |
+| **[lattice-vscode-helpers](https://github.com/FidelityFramework/lattice-vscode-helpers)** | Common helpers for VS Code plugins |
+| **[lattice-analyzers](https://github.com/FidelityFramework/lattice-analyzers)** | Native code analyzers for Lattice |
 | **[FSharp.Native.Analyzers.SDK](https://github.com/FidelityFramework/FSharp.Native.Analyzers.SDK)** | SDK for building custom analyzers for F# Native / FSNAC |
 
 ## Library Forks
@@ -132,7 +132,7 @@ Projects in the Fidelity Framework use different licenses appropriate to their n
 | fsnative-spec | MIT (hard fork of fsprojects/fsharp-spec) |
 | FStar | Apache 2.0 (fork of FStarLang/FStar) |
 | fsil, FSharp.UMX, XParsec | MIT |
-| Ionide forks | MIT |
+| Lattice forks | MIT |
 
 The dual-licensed projects are available under Apache 2.0 for open source use. Commercial licenses are available for organizations requiring additional terms.
 
