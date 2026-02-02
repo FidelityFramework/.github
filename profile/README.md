@@ -4,7 +4,7 @@
 
 <p align="center">
 🚧 <strong>Under Active Development</strong> 🚧<br>
-<em>These projects are in early development and not intended for production use.</em>
+<em>These projects are in early development and may see significant changes to supported features and APIs.</em>
 </p>
 
 ## About
