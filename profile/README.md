@@ -15,15 +15,13 @@ The Fidelity Framework was created by [Houston Haynes](https://www.linkedin.com/
 
 On a technical level it means direct native compilation without runtime dependencies. For our purposes, it translates to massive advantages in elegant design and ergonomics that yields deterministic memory without garbage collection and other negative aspects of managed runtime environments. The element that separates this framework from other tool chains is its memory safety that persists from source through compilation, as far as can be carried to the final binary.
 
-More broadly F# has long been a well-designed general-purpose language for more than 20 years, with several compilation targets. Its original compiler produces assemblies for the .NET Common Language Runtime. [Fable](https://fable.io/) is another compiler that transpiles F# to JavaScript and other languages for web and cross-platform development. Still another is [WebSharper](https://websharper.com/) which like Fable provides a pathway to produce full-stack F# web applications. And Fidelity Framework brings a completely new dimension: native binaries that provide all the benefits of hand-optimized low-level code, providing increased safety at no additional compute cost.
+Where other frameworks target managed runtimes or transpile to languages with their own memory models, Fidelity is designed to produce processor targeted applications and libraries with coherent memory management and compile-time safety guarantees. The name "Fidelity" reflects this mission: preserving type and memory safety from source code through compilation to native execution. The properties that made F# a reliable .NET platform language remains true when recast to generate native applications and libraries.
 
-Where other compilers target managed runtimes or transpile to languages with their own memory models, Fidelity is designed to produce native applications and libraries with coherent memory management and compile-time safety guarantees. The name "Fidelity" reflects this mission: preserving type and memory safety from source code through compilation to native execution. The properties that made F# a reliable .NET platform language remains true when recast to generate native applications and libraries.
-
-Firefly, the native AOT compiler at the heart of the Fidelity framework, uses a unique continuation-passing style (CPS) transformation and nanopass architecture. Rather than large monolithic compiler phases, the pipeline consists of many small, composable passes that each perform a single transformation. This design enables verification, optimization, and targeting flexibility.
+Composer, the native AOT compiler at the heart of the Fidelity framework, uses a unique continuation-passing style (CPS) transformation and nanopass architecture. Rather than large monolithic compiler phases, the pipeline consists of many small, composable passes that each perform a single transformation. This design enables verification, optimization, and targeting flexibility.
 
 ### Learn More
 
-For deeper discussion of the architectural thinking behind Fidelity, see the [SpeakEZ blog](https://speakez.tech/blog/). Key articles include:
+For deeper discussion of the architectural thinking behind Fidelity, see the [The Clef Language Site](https://clef-lang.com). Key articles include:
 
 - [The Fidelity Framework: A Primer](https://speakez.tech/blog/fidelity-framework-a-primer/) — Overview of the framework's goals, components, and design philosophy
 - [Delimited Continuations: Fidelity's Turning Point](https://speakez.tech/blog/delimited-continuations-fidelitys-turning-point/) — How CPS unifies async, actors, and native compilation
@@ -34,12 +32,11 @@ For deeper discussion of the architectural thinking behind Fidelity, see the [Sp
 
 | Repository | Description |
 |------------|-------------|
-| **[Firefly](https://github.com/FidelityFramework/Firefly)** | AOT compiler orchestrating the pipeline from F# source through MLIR to native binaries |
-| **[fsnative](https://github.com/FidelityFramework/fsnative)** | F# Native Compiler Services (FNCS) — hard fork of dotnet/fsharp providing native type resolution |
-| **[fsnative-spec](https://github.com/FidelityFramework/fsnative-spec)** | Normative specification for native F# type semantics |
+| **[Composer](https://github.com/FidelityFramework/Composer)** | AOT compiler orchestrating the pipeline from Clef through MLIR to native binaries |
+| **[Clef](https://github.com/FidelityFramework/clef)** | Clef Compiler Services (CCS) |
+| **[clef-lang-spec](https://github.com/FidelityFramework/clef-lang-spec)** | Normative specification for native Clef type and memory semantics |
 | **[BAREWire](https://github.com/FidelityFramework/BAREWire)** | Type-safe binary encoding, zero-copy memory operations, and IPC |
 | **[Farscape](https://github.com/FidelityFramework/Farscape)** | C/C++ header parsing for generating native library bindings |
-| ~~**[Alloy](https://github.com/FidelityFramework/Alloy)**~~ | ~~Native standard library~~ — *Absorbed into fsnative (January 2025). Repository preserved as historical reference.* |
 
 ## WREN Stack & Tooling
 
@@ -51,35 +48,35 @@ For deeper discussion of the architectural thinking behind Fidelity, see the [Sp
 
 ## IDE Support (Lattice)
 
-Lattice IDE tooling for F# Native development (evolved from Ionide):
+Lattice IDE tooling for Clef development (evolved from Ionide):
 
 | Repository | Description |
 |------------|-------------|
-| **[FsNativeAutoComplete](https://github.com/FidelityFramework/FsNativeAutoComplete)** | F# Native language server using Language Server Protocol |
-| **[lattice-vscode](https://github.com/FidelityFramework/lattice-vscode)** | VS Code plugin for F# Native development |
-| **[lattice-vim](https://github.com/FidelityFramework/lattice-vim)** | Vim plugin for F# Native based on LSP |
+| **[ClefAutoComplete](https://github.com/FidelityFramework/ClefAutoComplete)** | Clef language server using Language Server Protocol |
+| **[lattice-vscode](https://github.com/FidelityFramework/lattice-vscode)** | VS Code plugin for Clef development |
+| **[lattice-vim](https://github.com/FidelityFramework/lattice-vim)** | Vim plugin for Clef based on LSP |
 | **[lattice-vscode-helpers](https://github.com/FidelityFramework/lattice-vscode-helpers)** | Common helpers for VS Code plugins |
 | **[lattice-analyzers](https://github.com/FidelityFramework/lattice-analyzers)** | Native code analyzers for Lattice |
-| **[FSharp.Native.Analyzers.SDK](https://github.com/FidelityFramework/FSharp.Native.Analyzers.SDK)** | SDK for building custom analyzers for F# Native / FSNAC |
+| **[Clef.Analyzers.SDK](https://github.com/FidelityFramework/FSharp.Native.Analyzers.SDK)** | SDK for building custom analyzers for Clef / CAC |
 
 ## Library Forks
 
-Libraries forked and integrated into the fsnative ecosystem as compiler intrinsics:
+Libraries integrated into the fsnative ecosystem as either compiler intrinsics or deeply integrated tools:
 
 | Repository | Description |
 |------------|-------------|
 | **[fsil](https://github.com/FidelityFramework/fsil)** | F# inline generic library — default inlining semantics for fsnative |
 | **[FSharp.UMX](https://github.com/FidelityFramework/FSharp.UMX)** | Units of measure for primitive non-numeric types — intrinsic to fsnative's type universe |
 | **[XParsec](https://github.com/FidelityFramework/XParsec)** | Parser combinator library for F# |
-| **[FStar](https://github.com/FidelityFramework/FStar)** | Proof-oriented language with adaptations for fsnative integration |
+| **[FStar](https://github.com/FidelityFramework/FStar)** | Proof-oriented language that contributes ideas on how to use SMT with Clef |
 
 ## How It Works
 
 ```
-F# Source Code
+Clef Source Code
     |
     v
-FNCS (fsnative)          Type checking with native type resolution
+CCS (clef)          Type checking with native type resolution
     |
     v
 Program Semantic Graph   Rich intermediate representation
