@@ -1,6 +1,6 @@
 # Fidelity Framework
 
-**Native F# compilation with preserved type and memory safety.**
+**Native compilation with preserved type and memory safety.**
 
 <p align="center">
 🚧 <strong>Under Active Development</strong> 🚧<br>
